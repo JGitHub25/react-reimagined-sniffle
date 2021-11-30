@@ -6,42 +6,24 @@ const BookList = () => {
   return (
     <section className="book-list">
       <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
     </section>
   );
 };
 
+const title = "I love you to the moon and back";
+
 const Book = () => {
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
+      <img
+        className="book-image"
+        src="https://images-na.ssl-images-amazon.com/images/I/517h-u1AQlL._SX482_BO1,204,203,200_.jpg"
+        alt=""
+      ></img>
+      <h2>{title.toUpperCase()}</h2>
+      <h3 style={{ color: "green", fontSize: "12px" }}>Adela Martínez </h3>
     </article>
   );
 };
-
-const Image = () => {
-  return (
-    <img
-      className="book-image"
-      src="https://images-na.ssl-images-amazon.com/images/I/517h-u1AQlL._SX482_BO1,204,203,200_.jpg"
-      alt=""
-    ></img>
-  );
-};
-
-function Title() {
-  return <h2>i love you to the moon and back</h2>;
-}
-
-function Author() {
-  return <h3>Adela Martínez </h3>;
-}
 
 ReactDOM.render(<BookList />, document.getElementById("root"));
