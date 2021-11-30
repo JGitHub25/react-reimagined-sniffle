@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+// import './index.css';
 
-function Greeting() {
-  return <h4>Hell 567567baby girls! °°°°°°|||||</h4>;
-}
+const Greeting = () => {
+  return <h2>Hola</h2>;
+};
 
 ReactDOM.render(<Greeting />, document.getElementById("root"));
