@@ -2,22 +2,33 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
+const booksArray = [
+  {
+    title: "I love you to the moon and back",
+    img: "https://images-na.ssl-images-amazon.com/images/I/517h-u1AQlL._SX482_BO1,204,203,200_.jpg",
+    author: "Adela Martínez",
+  },
+  {
+    title: "pretty little title",
+    img: "https://images-na.ssl-images-amazon.com/images/I/911rEvApjvL._AC_UL200_SR200,200_.jpg",
+    author: "Walter Wallace",
+  },
+  {
+    title: "How to catch a dinosaur",
+    img: "https://images-na.ssl-images-amazon.com/images/I/81hkdra5HWL._AC_UL200_SR200,200_.jpg",
+    author: "John Voight",
+  },
+];
+
 const BookList = () => {
   return (
     <section className="book-list">
-      <Book
-        title="I love you to the moon and back"
-        img="https://images-na.ssl-images-amazon.com/images/I/517h-u1AQlL._SX482_BO1,204,203,200_.jpg"
-        author="Adela Martínez"
-      />
-      <MyComponent
-        title="pretty little title"
-        img="https://images-na.ssl-images-amazon.com/images/I/911rEvApjvL._AC_UL200_SR200,200_.jpg"
-        author="Walter Wallace"
-      >
-        <MyComponent />
-        <div>hola amigo</div>
-      </MyComponent>
+      {booksArray.map((book, index) => {
+        return <Book key={index} book={book} />;
+      })}
+      {booksArray.map((bookItem, index) => {
+        return <MyComponent key={index} {...bookItem} />;
+      })}
     </section>
   );
 };
@@ -31,16 +42,24 @@ const BookList = () => {
 //     </article>
 //   );
 // };
+const Adorno = () => {
+  return <h1>****</h1>;
+};
 
-const Book = ({ img, title, author }) => {
+const Book = (props) => {
+  const { img, title, author } = props.book;
   return (
     <article className="book">
       <img className="book-image" src={img} alt={title}></img>
+      <Adorno />
+      {props.children}
       <h2>{title.toUpperCase()}</h2>
       <h3 style={{ color: "green", fontSize: "12px" }}>{author}</h3>
     </article>
   );
 };
+
+//code
 
 class MyComponent extends React.Component {
   constructor(props) {
@@ -51,16 +70,14 @@ class MyComponent extends React.Component {
     this.author = author;
   }
   render() {
-    console.log(this.props);
-    console.log(this.props.children);
-
     const { img, title, author } = this.props;
 
     return (
       <article className="book">
         <img className="book-image" src={img} alt={title}></img>
+        <Adorno />
+
         <h2>{title.toUpperCase()}</h2>
-        {this.props.children}
         <h3 style={{ color: "green", fontSize: "12px" }}>{author}</h3>
       </article>
     );
