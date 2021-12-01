@@ -27,3 +27,8 @@ body {
   padding: 1rem 2rem;
   background: #fff;
 }
+
+.customClass {
+  color: red;
+  font-family: serif;
+}
